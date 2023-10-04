@@ -59,15 +59,23 @@ if streamlit.button('Get Fruit Load List'):
   streamlit.dataframe(my_data_rows)
 
 # This stops execution of streamlit below this line
-streamlit.stop()
-
+#streamlit.stop()
 
 # Allow the end user to add a fruit to list
-add_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
-streamlit.write('Thanks for adding ', add_my_fruit)
+def insert_row_snowflake(new_fruit):
+  with my_cns.curson() as my_cur:
+    my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+    return streamlit.write('Thanks for adding ', add_my_fruit)
+
+add_my_fruit = streamlit.text_input('What fruit would you like to add?')
+if streamlit.button9'Add a Fruit to the List'):
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  back_from_function = insert_row_snowflake(add_my_fruit)
+  streamlit.text(back_from_function)
+
 
 # Where we purposely trash our database table to learn a valuable lesson
-my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+
 
 
 
