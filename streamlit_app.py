@@ -58,12 +58,16 @@ if streamlist.button('Get Fruit Load List'):
   my_data_rows = get_fruit_load_list()
   streamlit.dataframe(my_data_rows)
 
+# This stops execution of streamlit below this line
+streamlit.stop()
+
+
 # Allow the end user to add a fruit to list
 add_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
 streamlit.write('Thanks for adding ', add_my_fruit)
 
 # Where we purposely trash our database table to learn a valuable lesson
-# my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+my_cur.execute("insert into fruit_load_list values ('from streamlit')")
 
 
 
