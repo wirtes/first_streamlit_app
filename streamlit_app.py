@@ -47,7 +47,7 @@ my_data_row = my_cur.fetchone()
 
 my_cur2 = my_cnx.cursor()
 my_cur2.execute("SELECT CURRENT_USER(), CURRENT_REGION()")
-my_data_row2 = my_cur.fetchone()
+my_data_row2 = my_cur2.fetchone()
 
 
 # my_cur = my_cnx.cursor()
